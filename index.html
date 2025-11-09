@@ -5,86 +5,119 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Giuliano Infantino — Philosophy</title>
   <meta name="description" content="Giuliano Infantino — Ph.D. student in philosophy at the University of Stuttgart. Work on the relation between thought and nature in Hegel." />
+
+  <!-- Serif body + clean sans headings, in the spirit of the reference page -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Use a classic, neutral pairing similar to many minimalist academic sites -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#ffffff; --text:#0b1020; --muted:#5c6273; --rule:#e8ebf2;
-      --link:#0b1020; --link-hover:#1a2238; --accent:#2c7be5;
-      --maxw:780px; --pad:22px; --radius:16px;
-      --shadow:0 10px 30px rgba(16,24,40,.06), 0 2px 6px rgba(16,24,40,.06);
+      /* Palette: simple, high-contrast, understated (like the reference) */
+      --bg: #ffffff;
+      --text: #111111;       /* near-black body text */
+      --muted:#595959;       /* quiet gray for meta text */
+      --rule:#e6e6e6;        /* subtle dividers */
+      --link:#111111;        /* dark links, minimal color */
+      --link-hover:#333333;
+
+      --maxw: 760px;
+      --pad: 22px;
+      --radius: 14px;
     }
     @media (prefers-color-scheme: dark){
       :root{
-        --bg:#0c0e12; --text:#e9eef7; --muted:#a7b0c2; --rule:#1c2130;
-        --link:#e9eef7; --link-hover:#ffffff; --accent:#6aa8ff;
-        --shadow:0 10px 30px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.4);
+        --bg:#0d0e10; --text:#eaeaea; --muted:#a7a7a7; --rule:#1f242a;
+        --link:#eaeaea; --link-hover:#ffffff;
       }
     }
+
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;scroll-behavior:smooth}
     body{
       background:var(--bg); color:var(--text);
-      font:18px/1.65 "Fraunces", ui-serif, Georgia, serif;
+      font: 18px/1.68 "Libre Baskerville", ui-serif, Georgia, "Times New Roman", serif;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      text-rendering: optimizeLegibility;
     }
-    a{color:var(--link); text-decoration:underline; text-underline-offset:3px}
+    a{color:var(--link); text-decoration: underline; text-underline-offset: 3px}
     a:hover{color:var(--link-hover)}
-    .wrap{max-width:var(--maxw); margin:0 auto; padding:28px var(--pad) 90px}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:28px var(--pad) 96px}
 
+    /* Header & Nav: simple, text-only like the reference */
     header{padding:64px 0 28px; text-align:center}
     .name{
-      font-family:Inter,system-ui,sans-serif; font-weight:600; letter-spacing:.2px;
-      margin:0 0 8px; font-size:clamp(36px,6vw,48px);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight: 600; letter-spacing:.1px; margin:0 0 10px;
+      font-size: clamp(36px, 6vw, 48px);
     }
-    .tagline{color:var(--muted); margin:0 auto 12px; max-width:60ch}
-    .micro{color:var(--muted); font-size:.95rem}
+    .tagline{color:var(--muted); margin:0 auto 12px; max-width: 60ch}
 
     .navwrap{
-      position:sticky; top:0; z-index:20; backdrop-filter:blur(6px);
-      background:color-mix(in oklab, var(--bg) 82%, transparent);
-      border-bottom:1px solid var(--rule);
+      position: sticky; top:0; z-index: 20;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      border-bottom: 1px solid var(--rule);
+      backdrop-filter: blur(6px);
     }
     nav{
-      display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
-      padding:12px var(--pad); font-family:Inter,system-ui,sans-serif; font-weight:500;
+      display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
+      padding: 12px var(--pad);
+      font-family: Inter, system-ui, sans-serif; font-weight: 500;
     }
-    nav a{text-decoration:none; padding:6px 10px; border-radius:10px}
-    nav a.active{background:color-mix(in oklab, var(--accent) 14%, var(--bg));}
+    nav a{text-decoration:none; color:var(--link); padding:6px 8px; border-radius:8px}
+    nav a.active{ background: rgba(0,0,0,.04) }
+    @media (prefers-color-scheme: dark){
+      nav a.active{ background: rgba(255,255,255,.06) }
+    }
 
-    hr{border:0; border-top:1px solid var(--rule); margin:28px 0}
-    section{scroll-margin-top:92px}
-    h2{font-family:Inter,system-ui,sans-serif; font-size:1.28rem; margin:0 0 8px; letter-spacing:.2px}
+    /* Sections: stacked vertical layout; generous spacing like the reference */
+    hr{border:0; border-top:1px solid var(--rule); margin: 32px 0}
+    section{scroll-margin-top:94px; padding: 2px 0}
+    h2{
+      font-family: Inter, system-ui, sans-serif;
+      font-weight: 600; letter-spacing:.2px;
+      font-size: 1.22rem; margin: 0 0 10px;
+    }
     .kicker{
-      font:600 .8rem/1 Inter,system-ui,sans-serif; letter-spacing:.18em;
-      text-transform:uppercase; color:var(--muted); margin-bottom:6px;
+      font: 600 .78rem/1 Inter,system-ui,sans-serif; letter-spacing:.18em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
     }
     .lead{font-size:1.08rem}
-    .list{list-style:none; padding:0; margin:8px 0 0}
-    .list li{margin:10px 0}
+
+    .list{list-style:none; padding:0; margin: 10px 0 0}
+    .list li{margin: 9px 0}
     .microlist li{margin:6px 0}
     .pill{display:inline-block; border:1px solid var(--rule); border-radius:999px; padding:6px 10px; margin:6px 6px 0 0; font:500 14px/1 Inter,system-ui,sans-serif}
 
-    /* IMPORTANT: single-column layout — every section stacks vertically */
-    .cols{display:block}              /* was grid; now single column */
-    .cols > *{margin-bottom:18px}     /* space between stacked cards */
+    .card{
+      border:1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      background: var(--bg);
+    }
 
-    .card{border:1px solid var(--rule); border-radius:var(--radius); padding:18px 16px; box-shadow:var(--shadow); background:var(--bg); width:100%}
+    /* EXTRA vertical rhythm between GENERAL subsections (e.g., Reviews, Misc.) */
+    .subsection{ margin-top: 36px }           /* more air before named blocks */
+    .section-break{ margin: 44px 0 0 }        /* big gap between major groups */
 
+    /* Back-to-top */
     .top-link{
       position:fixed; right:18px; bottom:18px; padding:8px 10px;
       font:500 14px Inter,system-ui,sans-serif; border:1px solid var(--rule);
       border-radius:10px; background:var(--bg); text-decoration:none;
     }
-    footer{margin-top:56px; padding-top:24px; border-top:1px solid var(--rule); color:var(--muted); font-size:.95rem}
 
+    footer{margin-top:64px; padding-top:24px; border-top:1px solid var(--rule); color:var(--muted); font-size:.95rem}
+
+    /* Print */
     @media print{
-      .navwrap, .top-link{display:none!important}
-      a{text-decoration:none; color:inherit}
-      .wrap{padding:0} header{padding:0 0 12px}
-      footer{border:0; margin-top:24px; padding:0}
-      section{break-inside:avoid}
+      .navwrap, .top-link { display:none !important }
+      a{ text-decoration: none; color: inherit }
+      .wrap{ padding: 0 }
+      header{ padding: 0 0 12px }
+      footer{ border: 0; margin-top: 24px; padding: 0 }
+      section{ break-inside: avoid }
     }
   </style>
 </head>
@@ -109,7 +142,6 @@
         Ph.D. student in philosophy at the University of Stuttgart. I work on the
         relationship between thought and nature in Hegel’s philosophy.
       </p>
-      <div class="micro">Based in Germany • Email below • Dark-mode friendly</div>
     </header>
 
     <hr>
@@ -131,7 +163,7 @@
       </section>
 
       <!-- Research -->
-      <section id="research">
+      <section id="research" class="section-break">
         <div class="kicker">Research</div>
         <div class="card">
           <h2>Current project</h2>
@@ -144,50 +176,48 @@
       </section>
 
       <!-- Publications -->
-      <section id="publications">
+      <section id="publications" class="section-break">
         <div class="kicker">Publications</div>
 
-        <div class="cols">
-          <div class="card">
-            <h2>Articles</h2>
-            <ul class="list">
-              <li>[11] One paper on freedom in <em>Plautus’s Captivi</em>. <span class="micro">Draft available on request.</span></li>
-              <li>[10] One paper on Hegel’s Replacement of Metaphysics with Philosophical Logic. <span class="micro">Draft available on request.</span></li>
-              <li>[9] One paper on the Method in Hegel’s Philosophy of Nature. <span class="micro">Draft available on request.</span></li>
-              <li>[8] One paper on Hegel’s Nodal line. <span class="micro">Draft available on request.</span></li>
-              <li>[7] One paper on children’s suffrage. <span class="micro">Under review.</span></li>
-              <li>[6] One paper on Modality and Nature in Hegel. <span class="micro">Under review.</span></li>
-            </ul>
-          </div>
+        <div class="card">
+          <h2>Articles</h2>
+          <ul class="list">
+            <li>[11] One paper on freedom in <em>Plautus’s Captivi</em>. <span class="microlist" style="color:var(--muted)">Draft available on request.</span></li>
+            <li>[10] One paper on Hegel’s Replacement of Metaphysics with Philosophical Logic. <span class="microlist" style="color:var(--muted)">Draft available on request.</span></li>
+            <li>[9] One paper on the Method in Hegel’s Philosophy of Nature. <span class="microlist" style="color:var(--muted)">Draft available on request.</span></li>
+            <li>[8] One paper on Hegel’s Nodal line. <span class="microlist" style="color:var(--muted)">Draft available on request.</span></li>
+            <li>[7] One paper on children’s suffrage. <span class="microlist" style="color:var(--muted)">Under review.</span></li>
+            <li>[6] One paper on Modality and Nature in Hegel. <span class="microlist" style="color:var(--muted)">Under review.</span></li>
+          </ul>
+        </div>
 
-          <div class="card">
-            <h2>Proceedings</h2>
-            <ul class="list">
-              <li>[5] (forthcoming) “Kant and Hegel on Logical Possibility and the Ontological Argument.” In <em>Kant’s Project of Enlightenment</em>, Proceedings of the 14th International Kant Congress. (eds.) Christoph Horn &amp; Rainer Schäfer. Berlin, De Gruyter. <span class="micro">Draft on request.</span></li>
-              <li>[4] (forthcoming) “Die Natur des Geistes. Hegels höherstufige Konkretion des Körper-Geist-Problems.” In <em>Hegel Jahrbuch 2022</em>, pp. 79–85. Duncker &amp; Humblot. <span class="micro">Draft on request.</span></li>
-              <li>[3] (2024) “Die Natur in den Begriff übersetzen. Erkennen und Begreifen in den Einleitungen zu Hegels Vorlesungen über die Philosophie der Natur.” In <em>Hegel und die Wissenschaften</em> (eds. Miguel Giusti &amp; Thomas Sören Hoffmann), Berlin: Duncker &amp; Humblot, pp. 199–209 (= <em>In Begriff und Konkretion</em>, Band 12). <a href="https://www.academia.edu" target="_blank" rel="noopener">pdf</a></li>
-            </ul>
-          </div>
+        <div class="card subsection">
+          <h2>Proceedings</h2>
+          <ul class="list">
+            <li>[5] (forthcoming) “Kant and Hegel on Logical Possibility and the Ontological Argument.” In <em>Kant’s Project of Enlightenment</em>, Proceedings of the 14th International Kant Congress. (eds.) Christoph Horn &amp; Rainer Schäfer. Berlin, De Gruyter. <span class="microlist" style="color:var(--muted)">Draft on request.</span></li>
+            <li>[4] (forthcoming) “Die Natur des Geistes. Hegels höherstufige Konkretion des Körper-Geist-Problems.” In <em>Hegel Jahrbuch 2022</em>, pp. 79–85. Duncker &amp; Humblot. <span class="microlist" style="color:var(--muted)">Draft on request.</span></li>
+            <li>[3] (2024) “Die Natur in den Begriff übersetzen. Erkennen und Begreifen in den Einleitungen zu Hegels Vorlesungen über die Philosophie der Natur.” In <em>Hegel und die Wissenschaften</em> (eds. Miguel Giusti &amp; Thomas Sören Hoffmann), Berlin: Duncker &amp; Humblot, pp. 199–209 (= <em>In Begriff und Konkretion</em>, Band 12). <a href="https://www.academia.edu" target="_blank" rel="noopener">pdf</a></li>
+          </ul>
+        </div>
 
-          <div class="card">
-            <h2>Reviews</h2>
-            <ul class="list microlist">
-              <li>[2] (2024) “Stephen Houlgate, <em>Hegel on Being</em>” (Bloomsbury, 2021). In: <em>Hegel-Studien</em> 57. <a href="https://www.academia.edu" target="_blank" rel="noopener">pdf</a></li>
-              <li>[1] (2023) “Pirmin Stekeler, <em>Hegels Realphilosophie</em>” (Meiner, 2023). In: <em>Hegel Bulletin</em> 45(2). <a href="https://www.cambridge.org" target="_blank" rel="noopener">pdf</a></li>
-            </ul>
-          </div>
+        <div class="card subsection">
+          <h2>Reviews</h2>
+          <ul class="list microlist">
+            <li>[2] (2024) “Stephen Houlgate, <em>Hegel on Being</em>” (Bloomsbury, 2021). In: <em>Hegel-Studien</em> 57. <a href="https://www.academia.edu" target="_blank" rel="noopener">pdf</a></li>
+            <li>[1] (2023) “Pirmin Stekeler, <em>Hegels Realphilosophie</em>” (Meiner, 2023). In: <em>Hegel Bulletin</em> 45(2). <a href="https://www.cambridge.org" target="_blank" rel="noopener">pdf</a></li>
+          </ul>
+        </div>
 
-          <div class="card">
-            <h2>Miscellaneous</h2>
-            <ul class="list microlist">
-              <li>[A] Modeling Hegelian Logic through Category Theory: Beyond Dialetheism and Set-Theoretic Approaches. <span class="micro">Draft available on request.</span></li>
-            </ul>
-          </div>
+        <div class="card subsection">
+          <h2>Miscellaneous</h2>
+          <ul class="list microlist">
+            <li>[A] Modeling Hegelian Logic through Category Theory: Beyond Dialetheism and Set-Theoretic Approaches. <span class="microlist" style="color:var(--muted)">Draft available on request.</span></li>
+          </ul>
         </div>
       </section>
 
       <!-- Presentations -->
-      <section id="presentations">
+      <section id="presentations" class="section-break">
         <div class="kicker">Presentations</div>
         <div class="card">
           <ul class="list">
@@ -223,41 +253,36 @@
       </section>
 
       <!-- CV -->
-      <section id="cv">
+      <section id="cv" class="section-break">
         <div class="kicker">Curriculum Vitae</div>
+        <div class="card">
+          <h2>Education & Visits</h2>
+          <ul class="list">
+            <li>2025 — Yale University, Visiting Assistant in Research (Host: Jacob McNulty)</li>
+            <li>2024 — Stanford University, Visiting Research Student (Host: David Hills)</li>
+            <li>2023— — University of Stuttgart, Dr. phil., thesis on <em>Thought and Nature</em> (Supervisor: Christian Martin)</li>
+            <li>2023 — University of Bonn, M.A. in Philosophy, thesis on Hegel’s Logic of Reflection and Contradiction (Supervisor: Rainer Schäfer)</li>
+            <li>2020 — University of Cologne, B.A. in Philosophy and Classics</li>
+          </ul>
 
-        <div class="cols">
-          <div class="card">
-            <h2>Education & Visits</h2>
-            <ul class="list">
-              <li>2025 — Yale University, Visiting Assistant in Research (Host: Jacob McNulty)</li>
-              <li>2024 — Stanford University, Visiting Research Student (Host: David Hills)</li>
-              <li>2023— — University of Stuttgart, Dr. phil., thesis on <em>Thought and Nature</em> (Supervisor: Christian Martin)</li>
-              <li>2023 — University of Bonn, M.A. in Philosophy, thesis on Hegel’s Logic of Reflection and Contradiction (Supervisor: Rainer Schäfer)</li>
-              <li>2020 — University of Cologne, B.A. in Philosophy and Classics</li>
-            </ul>
-          </div>
-
-          <div class="card">
+          <div class="subsection">
             <h2>Scholarships</h2>
             <ul class="list">
               <li>2024 — Research Fellowship, German Academic Exchange Service (DAAD)</li>
               <li>2023 — PhD Scholarship, The State of Baden-Württemberg (LLGF)</li>
             </ul>
-            <p class="micro" style="margin-top:8px">Tip: use your browser’s “Print to PDF” for a clean printable CV.</p>
           </div>
         </div>
       </section>
 
       <!-- Contact -->
-      <section id="contact">
+      <section id="contact" class="section-break">
         <div class="kicker">Contact</div>
         <div class="card">
           <h2>Get in touch</h2>
           <p>Email: giuliano<span aria-hidden="true">.</span>infantino<span aria-hidden="true">@</span>philo<span aria-hidden="true">.</span>uni-stuttgart<span aria-hidden="true">.</span>de</p>
           <p>Elsewhere:
             <a href="https://philpeople.org" target="_blank" rel="me noopener">PhilPeople</a>,
-            <a href="https://twitter.com" target="_blank" rel="me noopener">Twitter</a>,
             <a href="https://scholar.google.com" target="_blank" rel="me noopener">Google Scholar</a>,
             <a href="https://www.philo.uni-stuttgart.de/institut/team/Infantino/" target="_blank" rel="me noopener">University of Stuttgart</a>.
           </p>
@@ -266,16 +291,17 @@
     </main>
 
     <footer>
-      © <span id="year">2025</span> Giuliano Infantino • Built with plain HTML/CSS
+      © <span id="year">2025</span> Giuliano Infantino
     </footer>
   </div>
 
   <a href="#top" class="top-link" aria-label="Back to top">Top ↑</a>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Scrollspy (unchanged)
+    // Scrollspy (kept minimal)
     const links = [...document.querySelectorAll('#nav a')];
     const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
     const activate = id => links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
