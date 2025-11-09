@@ -4,24 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Giuliano Infantino — Philosophy</title>
-  <meta name="description" content="Giuliano Infantino — Ph.D. student in philosophy at the University of Stuttgart. Research on the relation between thought and nature in Hegel." />
+  <meta name="description" content="Giuliano Infantino — Ph.D. student in philosophy at the University of Stuttgart. Work on the relation between thought and nature in Hegel." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Elegant serif + crisp sans -->
+  <!-- Refined serif + crisp sans -->
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #ffffff;
-      --text: #0b1020;          /* deep slate */
-      --muted:#5c6273;          /* cool gray */
-      --rule:#e8ebf2;           /* light divider */
-      --link:#0b1020;
-      --link-hover:#1a2238;
-      --accent:#2c7be5;         /* subtle blue accent for small details */
-      --maxw: 760px;
-      --pad: 22px;
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(16,24,40,.05), 0 2px 6px rgba(16,24,40,.06);
+      --bg: #ffffff; --text: #0b1020; --muted:#5c6273; --rule:#e8ebf2;
+      --link:#0b1020; --link-hover:#1a2238; --accent:#2c7be5;
+      --maxw: 780px; --pad: 22px; --radius: 16px;
+      --shadow: 0 10px 30px rgba(16,24,40,.06), 0 2px 6px rgba(16,24,40,.06);
     }
     @media (prefers-color-scheme: dark){
       :root{
@@ -30,7 +23,6 @@
         --shadow: 0 10px 30px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.4);
       }
     }
-
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;scroll-behavior:smooth}
     body{
@@ -38,26 +30,23 @@
       font: 18px/1.65 "Fraunces", ui-serif, Georgia, serif;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
-    a{color:var(--link); text-decoration: underline; text-underline-offset: 3px}
+    a{color:var(--link); text-decoration: underline; text-underline-offset:3px}
     a:hover{color:var(--link-hover)}
-    .wrap{max-width:var(--maxw); margin:0 auto; padding:28px var(--pad) 80px}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:28px var(--pad) 90px}
 
     /* Header & Nav */
-    header{padding: 60px 0 28px; text-align:center}
+    header{padding: 64px 0 28px; text-align:center}
     .name{
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
       font-weight: 600; letter-spacing:.2px; margin:0 0 8px;
       font-size: clamp(36px, 6vw, 48px);
     }
-    .tagline{color:var(--muted); margin:0 auto 14px; max-width: 50ch}
+    .tagline{color:var(--muted); margin:0 auto 12px; max-width: 60ch}
     .micro{color:var(--muted); font-size:.95rem}
-    .card{
-      border:1px solid var(--rule); border-radius: var(--radius);
-      padding: 18px 16px; box-shadow: var(--shadow); background: var(--bg);
-    }
+
     .navwrap{
-      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(6px);
-      background: color-mix(in oklab, var(--bg) 80%, transparent);
+      position: sticky; top:0; z-index: 20; backdrop-filter: blur(6px);
+      background: color-mix(in oklab, var(--bg) 82%, transparent);
       border-bottom: 1px solid var(--rule);
     }
     nav{
@@ -65,32 +54,29 @@
       padding: 12px var(--pad);
       font-family: Inter, system-ui, sans-serif; font-weight: 500;
     }
-    nav a{
-      text-decoration:none; padding:6px 10px; border-radius:10px;
-    }
+    nav a{text-decoration:none; padding:6px 10px; border-radius:10px}
     nav a.active{ background: color-mix(in oklab, var(--accent) 14%, var(--bg)); }
 
     /* Sections */
     hr{border:0; border-top:1px solid var(--rule); margin: 28px 0}
-    section{scroll-margin-top:90px}
+    section{scroll-margin-top:92px}
     h2{
       font-family: Inter, system-ui, sans-serif;
       font-size: 1.28rem; margin: 0 0 8px; letter-spacing:.2px
     }
-    .lead{font-size:1.08rem}
     .kicker{
       font: 600 .8rem/1 Inter, system-ui, sans-serif; letter-spacing:.18em;
-      text-transform: uppercase; color: var(--muted);
+      text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
     }
-    .list{list-style:none; padding:0; margin: 10px 0 0}
+    .lead{font-size:1.08rem}
+    .list{list-style:none; padding:0; margin: 8px 0 0}
     .list li{margin: 10px 0}
+    .microlist li{margin: 6px 0}
+    .pill{display:inline-block; border:1px solid var(--rule); border-radius:999px; padding:6px 10px; margin: 6px 6px 0 0; font: 500 14px/1 Inter,system-ui,sans-serif}
     .cols{display:grid; gap:18px}
     @media(min-width: 740px){ .cols{ grid-template-columns: 1fr 1fr } }
 
-    .pill{
-      display:inline-block; border:1px solid var(--rule); border-radius:999px;
-      padding:6px 10px; margin: 6px 6px 0 0; font: 500 14px/1 Inter,system-ui,sans-serif;
-    }
+    .card{border:1px solid var(--rule); border-radius: var(--radius); padding: 18px 16px; box-shadow: var(--shadow); background: var(--bg)}
 
     .top-link{
       position:fixed; right:18px; bottom:18px; padding:8px 10px;
@@ -100,7 +86,7 @@
 
     footer{margin-top:56px; padding-top:24px; border-top:1px solid var(--rule); color:var(--muted); font-size:.95rem}
 
-    /* Print-friendly (for saving as PDF) */
+    /* Print-friendly */
     @media print{
       .navwrap, .top-link { display:none !important }
       a{ text-decoration: none; color: inherit }
@@ -120,7 +106,6 @@
       <a href="#research">Research</a>
       <a href="#publications">Publications</a>
       <a href="#presentations">Presentations</a>
-      <a href="#teaching">Teaching</a>
       <a href="#cv">CV</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -133,7 +118,7 @@
         Ph.D. student in philosophy at the University of Stuttgart. I work on the
         relationship between thought and nature in Hegel’s philosophy.
       </p>
-      <div class="micro">Email below • Based in Germany • Dark-mode friendly</div>
+      <div class="micro">Based in Germany • Email below • Dark-mode friendly</div>
     </header>
 
     <hr>
@@ -143,21 +128,14 @@
       <section id="about" class="spacious">
         <div class="kicker">About</div>
         <p class="lead">
-          I am a Ph.D. student at the University of Stuttgart (since 2023). Recently, I was a
-          Visiting Assistant in Research at Yale University and a Visiting Research Student at Stanford University.
-          I study how thought and nature relate in Hegel, with attention to Kant and issues in modality, logic,
-          and the philosophy of nature. I previously studied philosophy, classics, German, and comparative literature
-          at the Universities of Cologne and Bonn.
+          Recently, I was a Visiting Assistant in Research at Yale University and a Visiting Research Student at Stanford University.
+          Since 2023, I have been a Ph.D. student at the University of Stuttgart, where I work on the relationship between thought and nature in Hegel’s philosophy.
+          Previously, I studied philosophy, classics, German, and comparative literature at the Universities of Cologne and Bonn.
         </p>
-        <p>
-          <strong>Areas of competence.</strong> Metaphysics and Philosophy of Nature (Kant, Hegel).
-        </p>
-        <div aria-label="keywords" class="pillset">
-          <span class="pill">Hegel</span>
-          <span class="pill">Kant</span>
-          <span class="pill">Modality</span>
-          <span class="pill">Logic</span>
-          <span class="pill">Nature</span>
+        <p><strong>Areas of Competence.</strong> Metaphysics and Philosophy of Nature (Kant, Hegel).</p>
+        <p><strong>Areas of Interest.</strong> Philosophy of Mind (Theories of Rationality, Empirical Knowledge), Philosophy of Culture (Cassirer), Meta-Ethics (Kant), Applied Ethics (Children’s suffrage).</p>
+        <div aria-label="keywords">
+          <span class="pill">Hegel</span><span class="pill">Kant</span><span class="pill">Modality</span><span class="pill">Logic</span><span class="pill">Nature</span>
         </div>
       </section>
 
@@ -168,7 +146,7 @@
           <h2>Current project</h2>
           <p>
             My dissertation reconstructs Hegel’s philosophy of nature and argues that the existence of nature
-            is constitutive for truth and falsity. The project addresses three questions:
+            is constitutive for truth and falsity. It addresses three questions:
             (i) What is thought? (ii) What is nature? (iii) How do thought and nature relate?
           </p>
         </div>
@@ -179,79 +157,95 @@
         <div class="kicker">Publications</div>
         <div class="cols">
           <div class="card">
-            <h2>Articles & chapters</h2>
+            <h2>Articles</h2>
             <ul class="list">
-              <li>“Kant and Hegel on Logical Possibility and the Ontological Argument,” in <em>Kant’s Project of Enlightenment</em>, Proceedings of the 14th International Kant Congress, De Gruyter (forthcoming). <span class="micro">Draft on request.</span></li>
-              <li>“Die Natur des Geistes …,” <em>Hegel Jahrbuch 2022</em>, 79–85 (forthcoming). <span class="micro">Draft on request.</span></li>
-              <li>“Hegel’s Replacement of Metaphysics with Philosophical Logic.” <span class="micro">Draft on request.</span></li>
-              <li>“Method in Hegel’s Philosophy of Nature.” <span class="micro">Draft on request.</span></li>
-              <li>“Modality and Nature in Hegel.” <span class="micro">Draft on request.</span></li>
-              <li>“Hegel’s Nodal Line.” <span class="micro">Draft on request.</span></li>
+              <li>[11] One paper on freedom in <em>Plautus’s Captivi</em>. <span class="micro">Draft available on request.</span></li>
+              <li>[10] One paper on Hegel’s Replacement of Metaphysics with Philosophical Logic. <span class="micro">Draft available on request.</span></li>
+              <li>[9] One paper on the Method in Hegel’s Philosophy of Nature. <span class="micro">Draft available on request.</span></li>
+              <li>[8] One paper on Hegel’s Nodal line. <span class="micro">Draft available on request.</span></li>
+              <li>[7] One paper on children’s suffrage. <span class="micro">Under review.</span></li>
+              <li>[6] One paper on Modality and Nature in Hegel. <span class="micro">Under review.</span></li>
             </ul>
           </div>
           <div class="card">
-            <h2>In preparation</h2>
+            <h2>Proceedings</h2>
             <ul class="list">
-              <li>Paper on children’s suffrage. <span class="micro">German draft available on request.</span></li>
-              <li>Further articles from the dissertation. <span class="micro">(add titles)</span></li>
+              <li>[5] (forthcoming) “Kant and Hegel on Logical Possibility and the Ontological Argument.” In <em>Kant’s Project of Enlightenment</em>, Proceedings of the 14th International Kant Congress. (eds.) Christoph Horn &amp; Rainer Schäfer. Berlin, De Gruyter. <span class="micro">Draft on request.</span></li>
+              <li>[4] (forthcoming) “Die Natur des Geistes. Hegels höherstufige Konkretion des Körper-Geist-Problems.” In <em>Hegel Jahrbuch 2022</em>, pp. 79–85. Duncker &amp; Humblot. <span class="micro">Draft on request.</span></li>
+              <li>[3] (2024) “Die Natur in den Begriff übersetzen. Erkennen und Begreifen in den Einleitungen zu Hegels Vorlesungen über die Philosophie der Natur.” In <em>Hegel und die Wissenschaften</em> (eds. Miguel Giusti &amp; Thomas Sören Hoffmann), Berlin: Duncker &amp; Humblot, pp. 199–209 (= <em>In Begriff und Konkretion</em>, Band 12). <a href="https://www.academia.edu" target="_blank" rel="noopener">pdf</a></li>
             </ul>
-            <p class="micro">Full list available on request.</p>
+
+            <h2 style="margin-top:14px">Reviews</h2>
+            <ul class="list microlist">
+              <li>[2] (2024) “Stephen Houlgate, <em>Hegel on Being</em>” (Bloomsbury, 2021). In: <em>Hegel-Studien</em> 57. <a href="https://www.academia.edu" target="_blank" rel="noopener">pdf</a></li>
+              <li>[1] (2023) “Pirmin Stekeler, <em>Hegels Realphilosophie</em>” (Meiner, 2023). In: <em>Hegel Bulletin</em> 45(2). <a href="https://www.cambridge.org" target="_blank" rel="noopener">pdf</a></li>
+            </ul>
+
+            <h2 style="margin-top:14px">Miscellaneous</h2>
+            <ul class="list microlist">
+              <li>[A] Modeling Hegelian Logic through Category Theory: Beyond Dialetheism and Set-Theoretic Approaches. <span class="micro">Draft available on request.</span></li>
+            </ul>
           </div>
         </div>
       </section>
 
       <!-- Presentations -->
       <section id="presentations" class="spacious">
-        <div class="kicker">Presentations (selected)</div>
+        <div class="kicker">Presentations</div>
         <div class="card">
           <ul class="list">
-            <li>“Hegel’s Proof for the Necessary Existence of Nature,” <em>Logic, Nature and Modalities in German Idealism</em>, Yale University, Feb 2025 (US).</li>
-            <li>“Hegel’s replacement of metaphysics with philosophical logic,” <em>Classical German and Early Analytic Philosophy</em>, University of Stuttgart, July 2025 (DE).</li>
-            <li>“Kant und Hegel über den ontologischen Gottesbeweis,” University of Bonn, Sept 2024 (DE).</li>
-            <li>“Thinking actually …,” University of Stuttgart, Sept 2024 (DE).</li>
+            <li>[27]* “Hegel’s replacement of metaphysics with philosophical logic”, <em>Classical German and Early Analytic Philosophy</em>, July 2025, University of Stuttgart (Germany)</li>
+            <li>[26] “Hegel’s Proof for the Necessary Existence of Nature”, <em>Logic, Nature and Modalities in German Idealism</em>, February 2025, Yale University (United States)</li>
+            <li>[25]* Hegels transformativer Emergentismus, <em>Natur, Gesetz, Erkenntnis. Transzendentale Grundlagen empirischer Methodik</em>, December 2024, Max-Planck-Institut für die Physik des Lichts (Erlangen, Germany)</li>
+            <li>[24] Hegel’s Logical Proof for the Existence of Nature, Graduate Student Workshop, November 2024, Stanford University (United States)</li>
+            <li>[23] From Space-Time to Self-Gravitating Matter in Hegel’s Philosophy of Nature, <em>Kant and Hegel on Objectivity</em>, November 2024, Stanford University (United States)</li>
+            <li>[22] Kant und Hegel über den ontologischen Gottesbeweis, <em>Kants Projekt der Aufklärung</em> (14. Internationaler Kant-Kongress), September 2024, Universität Bonn (Germany)</li>
+            <li>[21] Thinking actually. Hegel’s notion of contingency in the philosophy of nature, <em>Forms of Thought</em>, September 2024, University of Stuttgart (Germany)</li>
+            <li>[20] Wirklich denken. Anfangsgründe einer Theorie präreflexiven Selbstbewusstseins, Forschungskolloquium (Prof. Markus Gabriel), June 2024, Universität Bonn (Germany)</li>
+            <li>[19] The Restlessness of the Real. Hegel on Logical and Real Contradictions, <em>Dialectic and Contradiction</em> (5th Hegel en perspectiva), June 2024, Universitat de València (Spain)</li>
+            <li>[18]* Hegels Grundlegung empirischer Naturerkenntnis, Gründungsworkshop der APIG-AG “Transzendentalphilosophische Grundlagen empirischer Erkenntnis”, February 2024, Universität Wuppertal (Germany)</li>
+            <li>[17] Die Einheit des Denkens in Hegels Logik, <em>Realismus und Idealismus heute IV</em>, November 2023, Universität Bonn (Germany)</li>
+            <li>[16] Versuch einer transformativen Lesart Hegels Psychologie, <em>Erkenntnistheorie und Philosophie des Geistes nach Kant und Hegel</em>, September 2023, Universität Stuttgart (Germany)</li>
+            <li>[15] Die hybride Methode in Hegels Naturphilosophie, 1. Bonner Graduiertenkonferenz für postkantischen Idealismus, September 2023, Universität Bonn (Germany)</li>
+            <li>[14] Notwendigkeit und Kontingenz in Hegels Naturphilosophie, <em>Realismus und Idealismus heute III</em>, July 2023, Universität Bonn (Germany)</li>
+            <li>[13] Hegels Begriff der Natur, Forschungskolloquium (Prof. Markus Gabriel), June 2023, Universität Bonn (Germany)</li>
+            <li>[12] Hegels Philosophie der Mechanik, <em>Realismus und Idealismus heute II</em>, December 2022, Universität Bonn (Germany)</li>
+            <li>[11] Beyond Realism and Idealism – Hegel’s Concept of Nature, <em>VIII International Symposium on Classical German Philosophy</em>, November 2022, Pontificia Universidad Católica Argentina (Buenos Aires, Argentina)</li>
+            <li>[10] Spirit, Sustainability and Nature. Hegel’s Concept of Provision in light of his Philosophy of Nature, <em>I. Congreso de la Sociedad Iberoamericana de Estudios Hegelianos</em>, November 2022, Santiago de Chile (Chile)</li>
+            <li>[9] The Logical Series and Nature as Series, <em>III German-Latin American Congress on Hegel’s Philosophy</em>, November 2022, Pontificia Universidad Católica del Perú (Lima, Peru)</li>
+            <li>[8] Das Faktum der Vernunft. Kants meta-ethische Letztbegründung moralischer Tatsachen, <em>IX Tagung für praktische Philosophie</em>, September 2022, Universität Salzburg (Austria)</li>
+            <li>[7] Nachhaltigkeit und Freiheit. Hegels Begriff der Vorsorge in den <em>Grundlinien</em>, <em>XXVI Internationaler Hegel-Kongress</em>, September 2022, Zadar (Croatia)</li>
+            <li>[6] Die logische Auflösung des Widerspruchs und das Problem ihrer Realisierung, Kolloquium für klassische deutsche Philosophie (Prof. Christian Martin), February 2022, Universität Heidelberg (Germany)</li>
+            <li>[5] Erkennen und Leib. Begründung einer korporalen Transzendentalphilosophie, Colloquium for French Philosophy, July 2022, Internationales Zentrum für Philosophie (Bonn, Germany)</li>
+            <li>[4] And Yet Everything is Geist. One Argument against one Notion of Spirit as “Second Nature”, <em>Zum Verhältnis von Natur und Geist bei Hegel</em>, February 2022, Universität Freiburg (Germany)</li>
+            <li>[3] Prinzip Wahlfreiheit. Warum alle Argumente für ein Mindestwahlalter ethisch unzulänglich sind, InterChair Kolloquium, June 2021, Internationales Zentrum für Philosophie (Bonn, Germany)</li>
+            <li>[2] Die Architektonik des Begriffs als Grundlage für das System der Freiheit, <em>XXXIII Internationaler Hegel-Kongress</em>, June 2021, Uniwersytet Warszawski (Warsaw, Poland)</li>
+            <li>[1] Idealismus und das System der Freiheit. Schelling, <em>Über das Wesen der menschlichen Freiheit</em>, May 2021, Inter-University-Center (Dubrovnik, Croatia)</li>
           </ul>
         </div>
       </section>
 
-      <!-- Teaching -->
-      <section id="teaching" class="spacious">
-        <div class="kicker">Teaching</div>
-        <div class="card">
-          <p class="micro">Add courses you taught or assisted, with semester and institution.</p>
-          <ul class="list">
-            <li>(add) Course title — Institution, term (role)</li>
-            <li>(add) Course title — Institution, term (role)</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- CV / Bio -->
+      <!-- CV -->
       <section id="cv" class="spacious">
-        <div class="kicker">CV</div>
+        <div class="kicker">Curriculum Vitae</div>
         <div class="cols">
           <div class="card">
-            <h2>Appointments & visits</h2>
+            <h2>Education & Visits</h2>
             <ul class="list">
               <li>2025 — Yale University, Visiting Assistant in Research (Host: Jacob McNulty)</li>
               <li>2024 — Stanford University, Visiting Research Student (Host: David Hills)</li>
-              <li>2023— — University of Stuttgart, Ph.D. (Supervisor: Christian Martin)</li>
-            </ul>
-            <h2 style="margin-top:14px">Education</h2>
-            <ul class="list">
-              <li>2023 — University of Bonn, M.A. Philosophy (Supervisor: Rainer Schäfer)</li>
-              <li>2020 — University of Cologne, B.A. Philosophy and Classics</li>
+              <li>2023— — University of Stuttgart, Dr. phil., thesis on <em>Thought and Nature</em> (Supervisor: Christian Martin)</li>
+              <li>2023 — University of Bonn, M.A. in Philosophy, thesis on Hegel’s Logic of Reflection and Contradiction (Supervisor: Rainer Schäfer)</li>
+              <li>2020 — University of Cologne, B.A. in Philosophy and Classics</li>
             </ul>
           </div>
           <div class="card">
-            <h2>Grants, awards & service</h2>
+            <h2>Scholarships</h2>
             <ul class="list">
-              <li>(add) Scholarships / grants</li>
-              <li>(add) Awards / prizes</li>
-              <li>(add) Service (organizing, refereeing)</li>
+              <li>2024 — Research Fellowship, German Academic Exchange Service (DAAD)</li>
+              <li>2023 — PhD Scholarship, The State of Baden-Württemberg (LLGF)</li>
             </ul>
-            <p style="margin-top:12px">
-              <a href="cv.pdf" download>Download CV (PDF)</a> <span class="micro">(place a file named <code>cv.pdf</code> next to this page)</span>
-            </p>
+            <p class="micro" style="margin-top:8px">A printable CV can be generated via your browser’s “Print to PDF”.</p>
           </div>
         </div>
       </section>
@@ -263,11 +257,11 @@
           <h2>Get in touch</h2>
           <p>Email: giuliano<span aria-hidden="true">.</span>infantino<span aria-hidden="true">@</span>philo<span aria-hidden="true">.</span>uni-stuttgart<span aria-hidden="true">.</span>de</p>
           <p>Elsewhere:
-            <a href="https://philpeople.org/" rel="me noopener">PhilPeople</a>,
-            <a href="https://scholar.google.com/" rel="me noopener">Google Scholar</a>,
-            <a href="https://www.uni-stuttgart.de/" rel="me noopener">University of Stuttgart</a>.
+            <a href="https://philpeople.org" target="_blank" rel="me noopener">PhilPeople</a>,
+            <a href="https://twitter.com" target="_blank" rel="me noopener">Twitter</a>,
+            <a href="https://scholar.google.com" target="_blank" rel="me noopener">Google Scholar</a>,
+            <a href="https://www.philo.uni-stuttgart.de/institut/team/Infantino/" target="_blank" rel="me noopener">University of Stuttgart</a>.
           </p>
-          <p class="micro">(add) ORCID • (add) Twitter/X • (add) GitHub • (add) personal email alias</p>
         </div>
       </section>
     </main>
@@ -283,22 +277,16 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Simple scrollspy
+    // Simple scrollspy highlighting the active section
     const links = [...document.querySelectorAll('#nav a')];
     const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-    const activate = id => {
-      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
-    };
+    const activate = id => links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
     const onScroll = () => {
-      let current = sections[0].id;
-      const y = window.scrollY + 110; // account for sticky nav
-      for (const sec of sections) {
-        if (sec.offsetTop <= y) current = sec.id;
-      }
+      let current = sections[0].id, y = window.scrollY + 110;
+      for (const sec of sections) if (sec.offsetTop <= y) current = sec.id;
       activate(current);
     };
-    document.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    document.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   </script>
 </body>
 </html>
