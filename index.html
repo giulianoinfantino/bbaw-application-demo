@@ -1,547 +1,304 @@
-<!DOCTYPE html>
-<html lang="de">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Semantische Suche – Schleiermacher-Briefwechsel | BBAW</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Giuliano Infantino — Philosophy</title>
+  <meta name="description" content="Giuliano Infantino — Ph.D. student in philosophy at the University of Stuttgart. Research on the relation between thought and nature in Hegel." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Elegant serif + crisp sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    /*========================
-      K L A S S I S C H E S  L A Y O U T
-    ========================*/
     :root{
-      --bg: #f7f4ec;           /* Papier-/Pergament-Ton */
-      --paper: #fffdf8;        /* helle Kartenfarbe */
-      --ink: #2b2b2b;          /* Textfarbe */
-      --muted: #6a6a6a;        /* Sekundärtext */
-      --rule: #d6d0c4;         /* Zierlinien */
-      --accent: #7a5c3e;       /* Sepia-Akzent */
-      --accent-dark: #5d452f;
-      --link: #2f4f4f;         /* gedämpftes Blaugrün */
-      --focus: #b08a5a;        /* Fokusrahmen */
-      --radius: 8px;
+      --bg: #ffffff;
+      --text: #0b1020;          /* deep slate */
+      --muted:#5c6273;          /* cool gray */
+      --rule:#e8ebf2;           /* light divider */
+      --link:#0b1020;
+      --link-hover:#1a2238;
+      --accent:#2c7be5;         /* subtle blue accent for small details */
+      --maxw: 760px;
+      --pad: 22px;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(16,24,40,.05), 0 2px 6px rgba(16,24,40,.06);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0c0e12; --text:#e9eef7; --muted:#a7b0c2; --rule:#1c2130;
+        --link:#e9eef7; --link-hover:#ffffff; --accent:#6aa8ff;
+        --shadow: 0 10px 30px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.4);
+      }
     }
 
-    *{ box-sizing: border-box; }
-
-    html, body{
-      margin:0; padding:0;
-      background: var(--bg);
-      color: var(--ink);
-    }
-
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;scroll-behavior:smooth}
     body{
-      font-family: Georgia, "Times New Roman", Times, serif;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      padding: 24px;
+      background:var(--bg); color:var(--text);
+      font: 18px/1.65 "Fraunces", ui-serif, Georgia, serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
+    a{color:var(--link); text-decoration: underline; text-underline-offset: 3px}
+    a:hover{color:var(--link-hover)}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:28px var(--pad) 80px}
 
-    a{ color: var(--link); text-decoration: none; }
-    a:hover{ text-decoration: underline; }
-
-    .container{
-      max-width: 1100px; margin: 0 auto;
-      background: var(--paper);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 2px 0 rgba(0,0,0,.04);
+    /* Header & Nav */
+    header{padding: 60px 0 28px; text-align:center}
+    .name{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-weight: 600; letter-spacing:.2px; margin:0 0 8px;
+      font-size: clamp(36px, 6vw, 48px);
     }
-
-    /* Kopfbereich mit Porträt */
-    header{
-      padding: 28px 28px 22px;
+    .tagline{color:var(--muted); margin:0 auto 14px; max-width: 50ch}
+    .micro{color:var(--muted); font-size:.95rem}
+    .card{
+      border:1px solid var(--rule); border-radius: var(--radius);
+      padding: 18px 16px; box-shadow: var(--shadow); background: var(--bg);
+    }
+    .navwrap{
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(6px);
+      background: color-mix(in oklab, var(--bg) 80%, transparent);
       border-bottom: 1px solid var(--rule);
-      background: linear-gradient(0deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url(''); /* optional feines Papiermuster */
+    }
+    nav{
+      display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+      padding: 12px var(--pad);
+      font-family: Inter, system-ui, sans-serif; font-weight: 500;
+    }
+    nav a{
+      text-decoration:none; padding:6px 10px; border-radius:10px;
+    }
+    nav a.active{ background: color-mix(in oklab, var(--accent) 14%, var(--bg)); }
+
+    /* Sections */
+    hr{border:0; border-top:1px solid var(--rule); margin: 28px 0}
+    section{scroll-margin-top:90px}
+    h2{
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 1.28rem; margin: 0 0 8px; letter-spacing:.2px
+    }
+    .lead{font-size:1.08rem}
+    .kicker{
+      font: 600 .8rem/1 Inter, system-ui, sans-serif; letter-spacing:.18em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .list{list-style:none; padding:0; margin: 10px 0 0}
+    .list li{margin: 10px 0}
+    .cols{display:grid; gap:18px}
+    @media(min-width: 740px){ .cols{ grid-template-columns: 1fr 1fr } }
+
+    .pill{
+      display:inline-block; border:1px solid var(--rule); border-radius:999px;
+      padding:6px 10px; margin: 6px 6px 0 0; font: 500 14px/1 Inter,system-ui,sans-serif;
     }
 
-    .hero{
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 20px;
-      align-items: center;
+    .top-link{
+      position:fixed; right:18px; bottom:18px; padding:8px 10px;
+      font:500 14px Inter,system-ui,sans-serif; border:1px solid var(--rule);
+      border-radius:10px; background:var(--bg); text-decoration:none;
     }
 
-    .portrait{
-      width: 120px; height: 150px; object-fit: cover;
-      border: 1px solid var(--rule);
-      border-radius: 4px;
-      background: #eee;
-    }
+    footer{margin-top:56px; padding-top:24px; border-top:1px solid var(--rule); color:var(--muted); font-size:.95rem}
 
-    .titles h1{
-      font-size: 1.9rem; margin: 0 0 6px 0; letter-spacing: .3px;
-    }
-    .titles p{ margin: 0; color: var(--muted); }
-
-    .bbaw{
-      margin-top: 10px; font-variant-caps: small-caps; letter-spacing: .8px; color: var(--accent); font-size: .95rem;
-    }
-
-    main{ display: grid; grid-template-columns: 270px 1fr; gap: 28px; padding: 28px; }
-
-    /* Seitenleiste (Filter) */
-    aside{
-      position: sticky; top: 16px; align-self: start;
-      border: 1px solid var(--rule); border-radius: var(--radius); background: #fffef9;
-    }
-    .panel-head{ padding: 14px 16px; border-bottom: 1px solid var(--rule); background: #fffaf1; font-variant-caps: small-caps; letter-spacing: .6px; color: var(--accent); }
-    .panel-body{ padding: 16px; }
-
-    label{ font-weight: 600; font-size: .95rem; display: block; margin-bottom: 6px; color: #3b3b3b; }
-    input[type="number"], select, input[type="text"]{
-      width: 100%; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 6px; background: #fff;
-      font-family: inherit; font-size: 1rem;
-    }
-    input:focus, select:focus{ outline: 2px solid var(--focus); outline-offset: 2px; }
-
-    .group{ margin-bottom: 14px; }
-
-    .btn{
-      display: inline-flex; align-items: center; gap: 8px;
-      border: 1px solid var(--accent); background: #fff; color: var(--accent);
-      padding: 10px 16px; border-radius: 999px; cursor: pointer; font-weight: 700;
-    }
-    .btn:hover{ background: #fff7eb; }
-    .btn[disabled]{ opacity:.5; cursor: not-allowed; }
-
-    /* Inhaltsspalte */
-    .content{
-      display: grid; gap: 20px;
-    }
-
-    .searchbar{
-      display: grid; grid-template-columns: 1fr auto; gap: 10px;
-      border: 1px solid var(--rule); border-radius: var(--radius);
-      padding: 12px; background: #fffefb;
-    }
-
-    .note{
-      font-size: .95rem; color: var(--muted);
-      padding: 12px 14px; border-left: 3px solid var(--rule); background: #fffefc; border-radius: 4px;
-    }
-
-    .stats{
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-    }
-    .stat{
-      border: 1px solid var(--rule); border-radius: var(--radius); padding: 12px; text-align: center; background: #fff;
-    }
-    .stat .num{ font-weight: 700; font-size: 1.3rem; }
-    .stat .lbl{ color: var(--muted); font-size: .9rem; }
-
-    .result-item{
-      border: 1px solid var(--rule); border-radius: var(--radius);
-      padding: 16px; background: #fff;
-    }
-    .result-head{ display:flex; justify-content: space-between; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin-bottom: 10px; }
-    .result-title{ font-weight: 700; font-size: 1.1rem; }
-    .meta{ color: var(--muted); font-size: .95rem; }
-
-    .badge{ border: 1px solid var(--rule); border-radius: 999px; padding: 4px 10px; font-size: .85rem; color: var(--accent-dark); background: #fffaf1; }
-
-    .tags{ display:flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-    .tag{ border: 1px solid var(--rule); border-radius: 999px; padding: 3px 8px; font-size: .85rem; background: #fff; }
-
-    .loading{ display:none; text-align:center; padding: 16px; }
-
-    footer{ border-top: 1px solid var(--rule); background: #fffdf8; color: var(--muted); text-align:center; padding: 16px; }
-
-    /* Modal klassisch */
-    .modal{ display:none; position:fixed; inset:0; background: rgba(0,0,0,.45); z-index:1000; }
-    .modal-content{ width:min(900px, 94vw); max-height:92vh; overflow: hidden; margin: 3vh auto; background: var(--paper); border:1px solid var(--rule); border-radius: var(--radius); display:flex; flex-direction:column; }
-    .modal-header{ padding: 14px 16px; border-bottom:1px solid var(--rule); display:flex; justify-content: space-between; align-items:center; background:#fffaf1; }
-    .modal-header h2{ font-size:1.2rem; margin:0; }
-    .close{ font-size: 28px; line-height: 1; cursor: pointer; color: var(--accent-dark); }
-    .modal-body{ padding: 18px; overflow:auto; }
-
-    .letter-metadata{ border:1px solid var(--rule); border-radius: var(--radius); background:#fffefb; padding: 14px; margin-bottom: 16px; }
-    .metadata-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:12px; }
-    .metadata-label{ color: var(--accent-dark); font-weight:700; font-size:.9rem; }
-
-    .letter-content{ font-size: 1.05rem; line-height: 1.85; white-space: pre-line; }
-
-    .actions{ display:flex; gap: 8px; margin-top: 14px; }
-    .btn-ghost{ border:1px solid var(--rule); background:#fff; color: var(--ink); border-radius: 6px; padding: 8px 12px; cursor: pointer; }
-    .btn-ghost:hover{ background:#fffaf1; }
-
-    @media (max-width: 880px){
-      main{ grid-template-columns: 1fr; }
-      .hero{ grid-template-columns: 80px 1fr; }
-      .portrait{ width: 80px; height: 100px; }
-      .stats{ grid-template-columns: 1fr; }
+    /* Print-friendly (for saving as PDF) */
+    @media print{
+      .navwrap, .top-link { display:none !important }
+      a{ text-decoration: none; color: inherit }
+      .wrap{ padding: 0 }
+      header{ padding: 0 0 12px }
+      footer{ border: 0; margin-top: 24px; padding: 0 }
+      section{ break-inside: avoid }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <a id="top"></a>
+
+  <div class="navwrap">
+    <nav id="nav">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#presentations">Presentations</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <div class="wrap">
     <header>
-      <div class="hero">
-        <!--
-          HINWEIS: Fügen Sie hier eine echte, gemeinfreie Porträtdatei ein.
-          Z.B. ersetzen Sie src durch "assets/schleiermacher.jpg" oder eine öffentliche URL.
-        -->
-        <img class="portrait" src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcTImV-KFeB7r0-vjryoV8vPqEOhULtwuunVhjnyRDFvYssFXUYBGflYRM6h0lMHlJPNMj0zj-kc6GjAfgU" alt="Friedrich Schleiermacher (Porträt)" />
-        <div class="titles">
-          <h1>Semantische Suche im Schleiermacher‑Briefwechsel</h1>
-          <p>Intelligente Recherche mit TF‑IDF (rein im Browser)</p>
-          <div class="bbaw">Berlin‑Brandenburgische Akademie der Wissenschaften</div>
-        </div>
-      </div>
+      <h1 class="name">Giuliano Infantino</h1>
+      <p class="tagline">
+        Ph.D. student in philosophy at the University of Stuttgart. I work on the
+        relationship between thought and nature in Hegel’s philosophy.
+      </p>
+      <div class="micro">Email below • Based in Germany • Dark-mode friendly</div>
     </header>
 
-    <main>
-      <aside aria-label="Filter">
-        <div class="panel-head">Suchparameter</div>
-        <div class="panel-body">
-          <div class="group">
-            <label for="yearFrom">Zeitraum von</label>
-            <input type="number" id="yearFrom" min="1768" max="1834" value="1790" placeholder="Jahr" />
+    <hr>
+
+    <main class="spacious">
+      <!-- About -->
+      <section id="about" class="spacious">
+        <div class="kicker">About</div>
+        <p class="lead">
+          I am a Ph.D. student at the University of Stuttgart (since 2023). Recently, I was a
+          Visiting Assistant in Research at Yale University and a Visiting Research Student at Stanford University.
+          I study how thought and nature relate in Hegel, with attention to Kant and issues in modality, logic,
+          and the philosophy of nature. I previously studied philosophy, classics, German, and comparative literature
+          at the Universities of Cologne and Bonn.
+        </p>
+        <p>
+          <strong>Areas of competence.</strong> Metaphysics and Philosophy of Nature (Kant, Hegel).
+        </p>
+        <div aria-label="keywords" class="pillset">
+          <span class="pill">Hegel</span>
+          <span class="pill">Kant</span>
+          <span class="pill">Modality</span>
+          <span class="pill">Logic</span>
+          <span class="pill">Nature</span>
+        </div>
+      </section>
+
+      <!-- Research -->
+      <section id="research" class="spacious">
+        <div class="kicker">Research</div>
+        <div class="card">
+          <h2>Current project</h2>
+          <p>
+            My dissertation reconstructs Hegel’s philosophy of nature and argues that the existence of nature
+            is constitutive for truth and falsity. The project addresses three questions:
+            (i) What is thought? (ii) What is nature? (iii) How do thought and nature relate?
+          </p>
+        </div>
+      </section>
+
+      <!-- Publications -->
+      <section id="publications" class="spacious">
+        <div class="kicker">Publications</div>
+        <div class="cols">
+          <div class="card">
+            <h2>Articles & chapters</h2>
+            <ul class="list">
+              <li>“Kant and Hegel on Logical Possibility and the Ontological Argument,” in <em>Kant’s Project of Enlightenment</em>, Proceedings of the 14th International Kant Congress, De Gruyter (forthcoming). <span class="micro">Draft on request.</span></li>
+              <li>“Die Natur des Geistes …,” <em>Hegel Jahrbuch 2022</em>, 79–85 (forthcoming). <span class="micro">Draft on request.</span></li>
+              <li>“Hegel’s Replacement of Metaphysics with Philosophical Logic.” <span class="micro">Draft on request.</span></li>
+              <li>“Method in Hegel’s Philosophy of Nature.” <span class="micro">Draft on request.</span></li>
+              <li>“Modality and Nature in Hegel.” <span class="micro">Draft on request.</span></li>
+              <li>“Hegel’s Nodal Line.” <span class="micro">Draft on request.</span></li>
+            </ul>
           </div>
-          <div class="group">
-            <label for="yearTo">bis</label>
-            <input type="number" id="yearTo" min="1768" max="1834" value="1834" placeholder="Jahr" />
-          </div>
-          <div class="group">
-            <label for="correspondent">Korrespondent</label>
-            <select id="correspondent">
-              <option value="">Alle</option>
-              <option value="reimer">Georg Andreas Reimer</option>
-              <option value="gaass">Joachim Christian Gaass</option>
-              <option value="brinkmann">Karl Gustav von Brinkmann</option>
-              <option value="herz">Henriette Herz</option>
-            </select>
+          <div class="card">
+            <h2>In preparation</h2>
+            <ul class="list">
+              <li>Paper on children’s suffrage. <span class="micro">German draft available on request.</span></li>
+              <li>Further articles from the dissertation. <span class="micro">(add titles)</span></li>
+            </ul>
+            <p class="micro">Full list available on request.</p>
           </div>
         </div>
-      </aside>
+      </section>
 
-      <section class="content">
-        <div class="searchbar">
-          <input type="text" id="searchInput" placeholder="Suche z. B. nach ‚Erziehung‘, ‚Religion‘ …" aria-label="Suchbegriff" />
-          <button class="btn" id="searchBtn" onclick="performSearch()">🔎 Suchen</button>
+      <!-- Presentations -->
+      <section id="presentations" class="spacious">
+        <div class="kicker">Presentations (selected)</div>
+        <div class="card">
+          <ul class="list">
+            <li>“Hegel’s Proof for the Necessary Existence of Nature,” <em>Logic, Nature and Modalities in German Idealism</em>, Yale University, Feb 2025 (US).</li>
+            <li>“Hegel’s replacement of metaphysics with philosophical logic,” <em>Classical German and Early Analytic Philosophy</em>, University of Stuttgart, July 2025 (DE).</li>
+            <li>“Kant und Hegel über den ontologischen Gottesbeweis,” University of Bonn, Sept 2024 (DE).</li>
+            <li>“Thinking actually …,” University of Stuttgart, Sept 2024 (DE).</li>
+          </ul>
         </div>
+      </section>
 
-        <div class="note" role="note">
-          Diese Demonstration ermöglicht eine <strong>klassische</strong>, ruhige Präsentation der Treffer. Die TF‑IDF‑Suche läuft vollständig lokal, es werden keine externen Dienste kontaktiert.
+      <!-- Teaching -->
+      <section id="teaching" class="spacious">
+        <div class="kicker">Teaching</div>
+        <div class="card">
+          <p class="micro">Add courses you taught or assisted, with semester and institution.</p>
+          <ul class="list">
+            <li>(add) Course title — Institution, term (role)</li>
+            <li>(add) Course title — Institution, term (role)</li>
+          </ul>
         </div>
+      </section>
 
-        <div class="stats" aria-label="Datenüberblick">
-          <div class="stat"><div class="num">10</div><div class="lbl">Briefe in der Demo</div></div>
-          <div class="stat"><div class="num">9</div><div class="lbl">Korrespondenten</div></div>
-          <div class="stat"><div class="num">1799–1825</div><div class="lbl">Zeitraum</div></div>
+      <!-- CV / Bio -->
+      <section id="cv" class="spacious">
+        <div class="kicker">CV</div>
+        <div class="cols">
+          <div class="card">
+            <h2>Appointments & visits</h2>
+            <ul class="list">
+              <li>2025 — Yale University, Visiting Assistant in Research (Host: Jacob McNulty)</li>
+              <li>2024 — Stanford University, Visiting Research Student (Host: David Hills)</li>
+              <li>2023— — University of Stuttgart, Ph.D. (Supervisor: Christian Martin)</li>
+            </ul>
+            <h2 style="margin-top:14px">Education</h2>
+            <ul class="list">
+              <li>2023 — University of Bonn, M.A. Philosophy (Supervisor: Rainer Schäfer)</li>
+              <li>2020 — University of Cologne, B.A. Philosophy and Classics</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Grants, awards & service</h2>
+            <ul class="list">
+              <li>(add) Scholarships / grants</li>
+              <li>(add) Awards / prizes</li>
+              <li>(add) Service (organizing, refereeing)</li>
+            </ul>
+            <p style="margin-top:12px">
+              <a href="cv.pdf" download>Download CV (PDF)</a> <span class="micro">(place a file named <code>cv.pdf</code> next to this page)</span>
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div class="loading" id="loading">
-          <p>Suche läuft …</p>
+      <!-- Contact -->
+      <section id="contact" class="spacious">
+        <div class="kicker">Contact</div>
+        <div class="card">
+          <h2>Get in touch</h2>
+          <p>Email: giuliano<span aria-hidden="true">.</span>infantino<span aria-hidden="true">@</span>philo<span aria-hidden="true">.</span>uni-stuttgart<span aria-hidden="true">.</span>de</p>
+          <p>Elsewhere:
+            <a href="https://philpeople.org/" rel="me noopener">PhilPeople</a>,
+            <a href="https://scholar.google.com/" rel="me noopener">Google Scholar</a>,
+            <a href="https://www.uni-stuttgart.de/" rel="me noopener">University of Stuttgart</a>.
+          </p>
+          <p class="micro">(add) ORCID • (add) Twitter/X • (add) GitHub • (add) personal email alias</p>
         </div>
-
-        <section id="resultsSection" aria-live="polite" aria-busy="false"></section>
       </section>
     </main>
 
     <footer>
-      <p><strong>Hinweis:</strong> Demonstrationsanwendung (Bewerbungszwecke)</p>
-      <p>Konzept für die Berlin‑Brandenburgische Akademie der Wissenschaften</p>
-      <p>Datengrundlage: BBAW Archiv &amp; Sammlungen · Erstellt: November 2025</p>
+      © <span id="year">2025</span> Giuliano Infantino • Built with plain HTML/CSS
     </footer>
   </div>
 
-  <!-- Modal -->
-  <div id="letterModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 id="modalTitle">Brief anzeigen</h2>
-        <span class="close" role="button" aria-label="Schließen" onclick="closeModal()">&times;</span>
-      </div>
-      <div class="modal-body" id="modalBody"></div>
-    </div>
-  </div>
+  <a href="#top" class="top-link" aria-label="Back to top">Top ↑</a>
 
   <script>
-    // ===== Datenbestand (unverändert aus Ihrer Version) =====
-    const letterDatabase = [
-      { id: "BBAW-SCH-1812-045", title: "Brief an Georg Andreas Reimer", date: "15. März 1812", correspondent: "Georg Andreas Reimer", location: "Berlin", excerpt: "Über die Grundsätze der Erziehung habe ich in letzter Zeit viel nachgedacht. Es scheint mir, dass die wahre Bildung des Menschen nur durch eine harmonische Entwicklung aller seiner Kräfte erreicht werden kann...", tags: ["Bildung", "Pädagogik", "Universitätslehre"], archivSignatur: "BBAW, Nachlass Schleiermacher, Korr. 234", fullText: `Berlin, den 15. März 1812
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-Mein verehrter Freund Reimer,
-
-Über die Grundsätze der Erziehung habe ich in letzter Zeit viel nachgedacht. Es scheint mir, dass die wahre Bildung des Menschen nur durch eine harmonische Entwicklung aller seiner Kräfte erreicht werden kann. Die Universität muss ein Ort sein, wo nicht nur Wissen vermittelt, sondern wo der Geist zur Selbsttätigkeit angeregt wird.
-
-Die gegenwärtige Lage unserer Bildungsanstalten erfüllt mich mit Sorge. Zu oft wird den Studierenden fertiges Wissen dargeboten, ohne dass sie selbst zum Denken angeregt werden. Das wahre Studium muss aber in der Ausbildung der Fähigkeit bestehen, selbständig zu forschen und zu urteilen.
-
-Bei der Konzeption der neuen Universität, an der ich mitwirken darf, lege ich besonderen Wert darauf, dass Forschung und Lehre eine untrennbare Einheit bilden. Der Professor soll nicht bloßer Wissensvermittler sein, sondern ein Forscher, der die Studierenden an seinem Erkenntnisprozess teilhaben lässt.
-
-Die Philosophie muss dabei eine zentrale Rolle spielen, denn sie lehrt uns, die Prinzipien unseres Denkens zu reflektieren.
-
-Mit herzlichen Grüßen
-Ihr Friedrich Schleiermacher`, physical: "4 Seiten, Tinte auf Papier, guter Erhaltungszustand", provenance: "Nachlass Georg Andreas Reimer, erworben 1867" },
-      { id: "BBAW-SCH-1806-122", title: "Brief an Joachim Christian Gaass", date: "22. Oktober 1806", correspondent: "Joachim Christian Gaass", location: "Halle", excerpt: "In diesen schweren Zeiten der politischen Umwälzung müssen wir uns auf das Wesentliche besinnen. Die Philosophie lehrt uns, dass der Mensch seine Freiheit nur in der Selbstbestimmung findet...", tags: ["Philosophie", "Politik", "Freiheit"], archivSignatur: "BBAW, Nachlass Schleiermacher, Korr. 156", fullText: `Halle, den 22. Oktober 1806
-
-Lieber Gaass,
-
-In diesen schweren Zeiten der politischen Umwälzung müssen wir uns auf das Wesentliche besinnen. Die Philosophie lehrt uns, dass der Mensch seine Freiheit nur in der Selbstbestimmung findet. Die gegenwärtigen Ereignisse fordern uns heraus, über die Grundlagen unseres Zusammenlebens neu nachzudenken.
-
-Die Schlacht bei Jena hat uns die Vergänglichkeit aller äußeren Macht vor Augen geführt. Was bleibt, ist die geistige Kultur, die innere Bildung des Menschen. Gerade jetzt zeigt sich, wie wichtig die Philosophie für das Leben ist.
-
-Ich bin überzeugt, dass wir aus dieser Krise gestärkt hervorgehen können, wenn wir uns auf unsere geistigen Kräfte besinnen.
-
-Ihr treuer Freund
-Schleiermacher`, physical: "3 Seiten, Tinte auf Papier", provenance: "Nachlass J.C. Gaass, Schenkung 1889" },
-      { id: "BBAW-SCH-1799-078", title: "Brief an Henriette Herz", date: "8. Juli 1799", correspondent: "Henriette Herz", location: "Potsdam", excerpt: "Die Reden über die Religion entstehen aus dem inneren Bedürfnis, das Gefühl der Abhängigkeit und der Verbundenheit mit dem Universum auszudrücken. Religion ist nicht Metaphysik oder Moral, sondern Anschauung und Gefühl des Unendlichen...", tags: ["Theologie", "Religion", "Philosophie"], archivSignatur: "BBAW, Nachlass Schleiermacher, Korr. 089", fullText: `Potsdam, den 8. Juli 1799
-
-Verehrte Freundin,
-
-Die Reden über die Religion, an denen ich arbeite, entstehen aus dem inneren Bedürfnis, das Gefühl der Abhängigkeit und der Verbundenheit mit dem Universum auszudrücken. Religion ist nicht Metaphysik oder Moral, sondern Anschauung und Gefühl des Unendlichen.
-
-Die Verächter der Religion unter den Gebildeten verstehen nicht, was Religion wirklich ist. Das Wesen der Religion liegt tiefer: Es ist das unmittelbare Bewusstsein der Abhängigkeit von etwas Größerem.
-
-Ich möchte zeigen, dass Religion und Bildung sich nicht widersprechen müssen.
-
-Mit aufrichtiger Hochachtung
-Ihr Schleiermacher`, physical: "2 Seiten, Tinte auf Papier", provenance: "Nachlass Henriette Herz, erworben 1903" },
-      { id: "BBAW-SCH-1825-201", title: "Brief an August Twesten", date: "12. Januar 1825", correspondent: "August Twesten", location: "Berlin", excerpt: "Die Hermeneutik als Kunstlehre des Verstehens muss systematisch entwickelt werden. Es geht darum, die Bedingungen der Möglichkeit des Verstehens überhaupt zu erfassen...", tags: ["Hermeneutik", "Philosophie", "Methodik"], archivSignatur: "BBAW, Nachlass Schleiermacher, Korr. 678", fullText: `Berlin, den 12. Januar 1825
-
-Verehrter Herr Twesten,
-
-Die Hermeneutik als Kunstlehre des Verstehens muss systematisch entwickelt werden. Es geht darum, die Bedingungen der Möglichkeit des Verstehens überhaupt zu erfassen.
-
-Das Verstehen eines Textes hat zwei Seiten: Die grammatische Interpretation erfasst die Bedeutung der Worte aus der Sprache heraus, die psychologische Interpretation sucht den individuellen Stil des Autors zu verstehen.
-
-Der hermeneutische Zirkel ist unvermeidlich: Um das Ganze zu verstehen, müssen wir die Teile verstehen, aber um die Teile zu verstehen, müssen wir eine Vorstellung vom Ganzen haben.
-
-Mit kollegialen Grüßen
-Fr. Schleiermacher`, physical: "5 Seiten, Tinte auf Papier", provenance: "Nachlass August Twesten, erworben 1876" },
-      { id: "BBAW-SCH-1808-156", title: "Brief an Karl Gustav von Brinkmann", date: "3. November 1808", correspondent: "Karl Gustav von Brinkmann", location: "Berlin", excerpt: "Die Akademie der Wissenschaften sollte nicht nur ein Ort der Gelehrsamkeit sein, sondern ein lebendiger Organismus, in dem verschiedene Disziplinen in fruchtbaren Austausch treten...", tags: ["Wissenschaft", "Akademie", "Interdisziplinarität"], archivSignatur: "BBAW, Nachlass Schleiermacher, Korr. 289", fullText: `Berlin, den 3. November 1808
-
-Hochverehrter Herr von Brinkmann,
-
-Die Akademie der Wissenschaften sollte nicht nur ein Ort der Gelehrsamkeit sein, sondern ein lebendiger Organismus, in dem verschiedene Disziplinen in fruchtbaren Austausch treten. Die Zusammenarbeit zwischen den Wissenschaften ist für den Fortschritt unerlässlich.
-
-Besonders fruchtbar ist der Austausch zwischen den philosophischen und den empirischen Wissenschaften. Die Philosophie gibt den Einzelwissenschaften begriffliche Klarheit.
-
-Mit vorzüglicher Hochachtung
-Ihr Schleiermacher`, physical: "3 Seiten, Tinte auf Papier", provenance: "Nachlass K.G. von Brinkmann, Schenkung 1895" },
-      { id: "BBAW-SCH-1803-091", title: "Brief an Charlotte von Kathen", date: "14. April 1803", correspondent: "Charlotte von Kathen", location: "Stolp", excerpt: "Das häusliche Leben und die Familie sind der Ort, wo sich die sittliche Bildung am unmittelbarsten vollzieht. Die Erziehung der Kinder ist die wichtigste Aufgabe...", tags: ["Familie", "Erziehung", "Sittlichkeit"], archivSignatur: "BBAW, Nachlass Schleiermacher, Korr. 123", fullText: `Stolp, den 14. April 1803
-
-Liebe Charlotte,
-
-Das häusliche Leben und die Familie sind der Ort, wo sich die sittliche Bildung am unmittelbarsten vollzieht. Die Erziehung der Kinder ist die wichtigste Aufgabe, die uns anvertraut ist.
-
-Kinder sollten nicht durch strenge Zucht geformt werden, sondern durch liebevolle Anleitung. Die Familie ist eine kleine Welt, in der das Kind für das größere Leben vorbereitet wird.
-
-Mit herzlichen Grüßen
-Ihr Schleiermacher`, physical: "2 Seiten, Tinte auf Papier", provenance: "Nachlass Charlotte von Kathen, erworben 1901" },
-      { id: "BBAW-SCH-1807-134", title: "Brief an August Wilhelm Schlegel", date: "20. September 1807", correspondent: "August Wilhelm Schlegel", location: "Halle", excerpt: "Die Kunst ist nicht bloße Nachahmung der Natur, sondern Ausdruck des Unendlichen im Endlichen. Die Poesie ist die höchste Form der Kunst...", tags: ["Ästhetik", "Kunst", "Poesie"], archivSignatur: "BBAW, Nachlass Schleiermacher, Korr. 201", fullText: `Halle, den 20. September 1807
-
-Verehrter Herr Schlegel,
-
-Die Kunst ist nicht bloße Nachahmung der Natur, sondern Ausdruck des Unendlichen im Endlichen. Die Poesie ist die höchste Form der Kunst, denn sie arbeitet mit der Sprache, dem Medium des Geistes selbst.
-
-Die Romantik sucht die Darstellung des Unendlichen, des nie ganz Fassbaren. Ich sehe hierin eine Verwandtschaft zur Religion.
-
-Hochachtungsvoll
-Fr. Schleiermacher`, physical: "3 Seiten, Tinte auf Papier", provenance: "Nachlass A.W. Schlegel, erworben 1897" },
-      { id: "BBAW-SCH-1811-178", title: "Brief an Friedrich Heinrich Jacobi", date: "5. Dezember 1811", correspondent: "Friedrich Heinrich Jacobi", location: "Berlin", excerpt: "Der Streit zwischen Glauben und Wissen ist ein Scheinproblem. Es gibt keinen wahren Glauben ohne Erkenntnis und keine Erkenntnis ohne ein Element des Glaubens...", tags: ["Philosophie", "Glaube", "Vernunft"], archivSignatur: "BBAW, Nachlass Schleiermacher, Korr. 345", fullText: `Berlin, den 5. Dezember 1811
-
-Hochverehrter Herr Jacobi,
-
-Der Streit zwischen Glauben und Wissen ist ein Scheinproblem. Die Vernunft kann die letzten Gründe nicht beweisen, sie muss sie als gegeben annehmen.
-
-Es gibt eine unmittelbare Gewissheit, ein Gefühl der schlechthinnigen Abhängigkeit, das aller Reflexion vorausgeht. Diese unmittelbare Gewissheit nenne ich Glauben.
-
-Mit vorzüglicher Hochachtung
-Schleiermacher`, physical: "4 Seiten, Tinte auf Papier", provenance: "Nachlass F.H. Jacobi, Schenkung 1893" },
-      { id: "BBAW-SCH-1821-223", title: "Brief an Wilhelm Dilthey Sr.", date: "18. März 1821", correspondent: "Wilhelm Dilthey Sr.", location: "Berlin", excerpt: "Die Geschichte ist nicht nur eine Aneinanderreihung von Ereignissen, sondern ein sinnvolles Ganzes. Die historische Methode ist daher wesentlich hermeneutisch...", tags: ["Geschichte", "Hermeneutik", "Methode"], archivSignatur: "BBAW, Nachlass Schleiermacher, Korr. 567", fullText: `Berlin, den 18. März 1821
-
-Sehr geehrter Herr Dilthey,
-
-Die Geschichte ist nicht nur eine Aneinanderreihung von Ereignissen, sondern ein sinnvolles Ganzes. Um sie zu verstehen, müssen wir die Absichten der handelnden Personen nachvollziehen.
-
-Der Historiker muss sich in die Vergangenheit hineinversetzen können. Die Spannung zwischen historischer Objektivität und gegenwärtiger Relevanz ist nicht aufzulösen.
-
-Mit kollegialen Grüßen
-Schleiermacher`, physical: "3 Seiten, Tinte auf Papier", provenance: "Nachlass W. Dilthey Sr., erworben 1905" },
-      { id: "BBAW-SCH-1800-045", title: "Brief an Friedrich Schlegel", date: "28. Februar 1800", correspondent: "Friedrich Schlegel", location: "Berlin", excerpt: "Die Freundschaft ist eine der höchsten Formen menschlicher Beziehung. In der wahren Freundschaft erkennen wir uns selbst im anderen und den anderen in uns selbst...", tags: ["Freundschaft", "Persönliches", "Philosophie"], archivSignatur: "BBAW, Nachlass Schleiermacher, Korr. 098", fullText: `Berlin, den 28. Februar 1800
-
-Mein lieber Freund Schlegel,
-
-Die Freundschaft ist eine der höchsten Formen menschlicher Beziehung. In der wahren Freundschaft erkennen wir uns selbst im anderen und den anderen in uns selbst. Sie ist mehr als bloße Sympathie oder gemeinsames Interesse.
-
-Unsere Gespräche über Literatur und Philosophie haben mich stets bereichert. Die Romantik, die Sie mitbegründet haben, öffnet neue Wege des Denkens und Fühlens.
-
-In aufrichtiger Freundschaft
-Ihr Schleiermacher`, physical: "2 Seiten, Tinte auf Papier", provenance: "Nachlass Friedrich Schlegel, erworben 1892" }
-    ];
-
-    // ===== TF‑IDF‑Suche (Ihre Logik leicht bereinigt) =====
-    function performSmartSearch(query) {
-      const preprocessText = (text) => text.toLowerCase().replace(/[^\wäöüß\s]/g, ' ').split(/\s+/).filter(w => w.length > 2);
-      const queryTerms = preprocessText(query);
-      const documentCount = letterDatabase.length;
-      const termDocumentCount = {};
-
-      letterDatabase.forEach(letter => {
-        const letterText = `${letter.title} ${letter.excerpt} ${letter.fullText} ${letter.tags.join(' ')}`;
-        const terms = new Set(preprocessText(letterText));
-        terms.forEach(t => termDocumentCount[t] = (termDocumentCount[t] || 0) + 1);
-      });
-
-      const idf = {};
-      queryTerms.forEach(term => {
-        const df = termDocumentCount[term] || 0;
-        idf[term] = df > 0 ? Math.log(documentCount / df) : 0;
-      });
-
-      const results = letterDatabase.map(letter => {
-        const letterText = `${letter.title} ${letter.excerpt} ${letter.fullText} ${letter.tags.join(' ')}`.toLowerCase();
-        const letterTerms = preprocessText(letterText);
-        const termFreq = {};
-        letterTerms.forEach(t => termFreq[t] = (termFreq[t] || 0) + 1);
-
-        let tfidfScore = 0;
-        queryTerms.forEach(term => { tfidfScore += (termFreq[term] || 0) * (idf[term] || 0); });
-        const normalized = Math.min(100, Math.round(tfidfScore * 10));
-
-        const titleTerms = preprocessText(letter.title);
-        const titleBonus = queryTerms.filter(t => titleTerms.includes(t)).length * 10;
-
-        const tagText = letter.tags.join(' ').toLowerCase();
-        const tagBonus = queryTerms.filter(t => tagText.includes(t)).length * 15;
-
-        const semanticRelations = {
-          'bildung': ['erziehung','lehre','studium','universität','pädagogik'],
-          'religion': ['gott','glaube','theologie','kirche','frömmigkeit'],
-          'philosophie': ['denken','vernunft','geist','erkenntnis'],
-          'politik': ['staat','freiheit','gesellschaft','preußen'],
-          'hermeneutik': ['verstehen','interpretation','auslegung','text'],
-          'kunst': ['ästhetik','schönheit','poesie','romantik']
-        };
-        let semanticBonus = 0;
-        queryTerms.forEach(qt => {
-          Object.entries(semanticRelations).forEach(([key, rel]) => {
-            if (qt.includes(key) || rel.some(r => qt.includes(r))) {
-              rel.forEach(r => { if (letterText.includes(r)) semanticBonus += 5; });
-            }
-          });
-        });
-
-        const finalScore = Math.min(100, normalized + titleBonus + tagBonus + semanticBonus);
-        return { ...letter, similarity: finalScore };
-      });
-
-      const filtered = results.filter(r => r.similarity > 15 && applyFilters(r)).sort((a,b) => b.similarity - a.similarity).slice(0,10);
-      return filtered;
-    }
-
-    function applyFilters(letter){
-      const yearFrom = parseInt(document.getElementById('yearFrom').value) || 1768;
-      const yearTo = parseInt(document.getElementById('yearTo').value) || 1834;
-      const correspondent = document.getElementById('correspondent').value;
-      const letterYear = parseInt(letter.date.split(' ')[2]);
-      if (letterYear < yearFrom || letterYear > yearTo) return false;
-      if (correspondent){
-        const map = { 'reimer': 'Georg Andreas Reimer', 'gaass': 'Joachim Christian Gaass', 'brinkmann': 'Karl Gustav von Brinkmann', 'herz': 'Henriette Herz' };
-        if (letter.correspondent !== map[correspondent]) return false;
+    // Simple scrollspy
+    const links = [...document.querySelectorAll('#nav a')];
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const activate = id => {
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    };
+    const onScroll = () => {
+      let current = sections[0].id;
+      const y = window.scrollY + 110; // account for sticky nav
+      for (const sec of sections) {
+        if (sec.offsetTop <= y) current = sec.id;
       }
-      return true;
-    }
-
-    async function performSearch(){
-      const q = document.getElementById('searchInput').value;
-      const resultsSection = document.getElementById('resultsSection');
-      const loading = document.getElementById('loading');
-      const btn = document.getElementById('searchBtn');
-      if (!q.trim()){ alert('Bitte geben Sie einen Suchbegriff ein.'); return; }
-      resultsSection.innerHTML = ''; loading.style.display = 'block'; btn.disabled = true;
-      try{
-        await new Promise(r => setTimeout(r, 200));
-        const hits = performSmartSearch(q);
-        displayResults(hits);
-      } catch(err){
-        resultsSection.innerHTML = `<div class="note">Fehler bei der Suche: ${err.message}</div>`;
-      } finally {
-        loading.style.display = 'none'; btn.disabled = false;
-      }
-    }
-
-    function displayResults(results){
-      const el = document.getElementById('resultsSection');
-      if (results.length === 0){
-        el.innerHTML = `<div class="note">Keine Ergebnisse. Bitte passen Sie die Suche oder Filter an.</div>`; return;
-      }
-      let html = `<h2 style="margin:0 0 6px 0; font-size:1.2rem;">Suchergebnisse (${results.length} Treffer)</h2>`;
-      html += `<hr style="border:none; border-top:1px solid var(--rule); margin: 6px 0 14px;" />`;
-      results.forEach(r => {
-        html += `
-          <article class="result-item">
-            <div class="result-head">
-              <div>
-                <div class="result-title">${r.title}</div>
-                <div class="meta">${r.date} · ${r.location} · ${r.correspondent}</div>
-                <div class="meta" style="margin-top:4px; font-size:.9rem;">Archivsignatur: ${r.archivSignatur}</div>
-              </div>
-              <div class="badge" title="automatisch berechnete Relevanz">${r.similarity}%</div>
-            </div>
-            <p>${r.excerpt}</p>
-            <div class="tags">${r.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-            <div style="margin-top:10px;">
-              <button class="btn-ghost" onclick="viewFullLetter('${r.id}')">📖 Vollständigen Brief anzeigen</button>
-            </div>
-          </article>`;
-      });
-      el.innerHTML = html;
-    }
-
-    function viewFullLetter(id){
-      const letter = letterDatabase.find(l => l.id === id);
-      if (!letter) return;
-      const modal = document.getElementById('letterModal');
-      const title = document.getElementById('modalTitle');
-      const body = document.getElementById('modalBody');
-      title.textContent = letter.title;
-      body.innerHTML = `
-        <section class="letter-metadata">
-          <div class="metadata-grid">
-            <div><div class="metadata-label">Brief‑ID</div><div>${letter.id}</div></div>
-            <div><div class="metadata-label">Datum</div><div>${letter.date}</div></div>
-            <div><div class="metadata-label">Absender</div><div>Friedrich Schleiermacher</div></div>
-            <div><div class="metadata-label">Empfänger</div><div>${letter.correspondent}</div></div>
-            <div><div class="metadata-label">Ort</div><div>${letter.location}</div></div>
-            <div><div class="metadata-label">Archivsignatur</div><div>${letter.archivSignatur}</div></div>
-            <div><div class="metadata-label">Physische Beschreibung</div><div>${letter.physical}</div></div>
-            <div><div class="metadata-label">Provenienz</div><div>${letter.provenance}</div></div>
-          </div>
-        </section>
-        <h3 style="margin: 0 0 8px 0; font-size:1.05rem; color: var(--accent-dark);">Brieftext (Transkription)</h3>
-        <div class="letter-content">${letter.fullText}</div>
-        <div class="actions">
-          <button class="btn-ghost" onclick="downloadLetter('${letter.id}')">💾 Als PDF herunterladen</button>
-          <button class="btn-ghost" onclick="showCitation('${letter.id}')">📋 Zitation kopieren</button>
-        </div>`;
-      modal.style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal(){
-      const modal = document.getElementById('letterModal');
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    function downloadLetter(id){
-      const letter = letterDatabase.find(l => l.id === id);
-      alert(`Download-Funktion für Brief ${letter.id}\n\nIn einer vollständigen Implementierung würde hier ein PDF generiert.`);
-    }
-
-    function showCitation(id){
-      const letter = letterDatabase.find(l => l.id === id);
-      const citation = `Schleiermacher, Friedrich D. E. "${letter.title}". ${letter.date}. ${letter.archivSignatur}. Berlin‑Brandenburgische Akademie der Wissenschaften.`;
-      navigator.clipboard.writeText(citation).then(() => alert('Zitation kopiert:\n\n' + citation));
-    }
-
-    document.getElementById('searchInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(); });
-    window.addEventListener('click', (e) => { const modal = document.getElementById('letterModal'); if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+      activate(current);
+    };
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   </script>
 </body>
 </html>
